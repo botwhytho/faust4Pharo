@@ -51,7 +51,7 @@ jobs:
     - name: Build libfaust
       run: |
         find /usr -name llvm-config
-        export PATH="/usr/lib/llvm-15/bin:$PATH"
+        export PATH=$(dirname $(find /usr -name llvm-config)):$PATH
         export LLVM_ROOT=$(llvm-config --prefix | tr '\n' ' ')
         echo "LLVM_ROOT: " $LLVM_ROOT
         cd build
