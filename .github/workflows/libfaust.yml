@@ -50,8 +50,7 @@ jobs:
 
     - name: Build libfaust
       run: |
-        find /usr -name llvm-config
-        export PATH=$(dirname $(find /usr -name llvm-config)):$PATH
+        export PATH="/usr/lib/llvm-12/bin/llvm-config:$PATH"
         export LLVM_ROOT=$(llvm-config --prefix | tr '\n' ' ')
         echo "LLVM_ROOT: " $LLVM_ROOT
         cd build
@@ -397,7 +396,7 @@ jobs:
 
   create-release:
     if: ${{ inputs.create_release }} 
-    needs: [build-ubuntu, build-ubuntu-aarch64, build-macos, build-windows]
+    needs: [build-ubuntu] #, build-ubuntu-aarch64, build-macos, build-windows]
     runs-on: ubuntu-latest
     name: "Create Release on GitHub"
     permissions:
