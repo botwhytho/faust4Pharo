@@ -28,7 +28,7 @@ jobs:
       matrix:
         include:
           - name: ubuntu-x86_64
-            os: ubuntu-22.04
+            os: ubuntu-20.04
             cmake-options: >-
               -DCMAKE_BUILD_TYPE=Release
               -DCMAKE_VERBOSE_MAKEFILE=ON
@@ -46,7 +46,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get install -y libllvm15 llvm-15 llvm-15-dev
+        sudo apt-get install -y libllvm12 llvm-12 llvm-12-dev
 
     - name: Build libfaust
       run: |
